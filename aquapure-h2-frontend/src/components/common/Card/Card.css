@@ -1,0 +1,33 @@
+/* Estilos del componente Card */
+
+.card {
+  background: var(--color-blanco-hueso-95);
+  padding: var(--spacing-4xl) var(--spacing-3xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+  border: 2px solid transparent;
+}
+
+.card-hover {
+  cursor: pointer;
+}
+
+.card-hover:hover {
+  transform: translateY(-10px);
+  border-color: var(--color-verde-emp);
+  box-shadow: 0 15px 40px rgba(76, 175, 80, 0.3);
+}
+
+.card-clickable {
+  cursor: pointer;
+}
+
+.card-clickable:active {
+  transform: scale(0.98);
+}
+
+.card-clickable:focus-visible {
+  outline: 2px solid var(--color-verde-emp);
+  outline-offset: 2px;
+}

@@ -1,0 +1,129 @@
+/* Estilos del componente Button */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md) var(--spacing-3xl);
+  border: none;
+  border-radius: var(--radius-2xl);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  outline: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-verde-emp);
+  outline-offset: 2px;
+}
+
+/* Variantes */
+
+.btn-primary {
+  background: var(--color-verde-emp);
+  color: white;
+  box-shadow: var(--shadow-verde-sm);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-verde-emp-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-verde-md);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-verde-sm);
+}
+
+.btn-secondary {
+  background: var(--color-gris);
+  color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--color-negro-gris);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--color-verde-emp);
+  color: var(--color-verde-emp);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background: var(--color-verde-emp);
+  color: white;
+}
+
+.btn-danger {
+  background: var(--color-error);
+  color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: #d32f2f;
+  transform: translateY(-2px);
+}
+
+/* Tamaños */
+
+.btn-small {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-lg);
+}
+
+.btn-medium {
+  padding: var(--spacing-md) var(--spacing-3xl);
+  font-size: var(--font-size-base);
+}
+
+.btn-large {
+  padding: var(--spacing-lg) var(--spacing-4xl);
+  font-size: var(--font-size-lg);
+}
+
+/* Full Width */
+
+.btn-full-width {
+  width: 100%;
+}
+
+/* Estados */
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+/* Spinner de Loading */
+
+.btn-spinner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

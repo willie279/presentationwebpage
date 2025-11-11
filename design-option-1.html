@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opción 1 - Landing Page Tratamiento de Aguas | EMP Medellín</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blanco-hueso: #F5F5DC;
+            --gris: #808080;
+            --negro-gris: #2C2C2C;
+            --verde-emp: #4CAF50;
+            --verde-hover: #45a049;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, rgba(44, 44, 44, 0.92), rgba(76, 175, 80, 0.85)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23555" width="1200" height="800"/><text x="50%" y="50%" fill="%23fff" font-size="48" text-anchor="middle">PLANTA DE TRATAMIENTO</text><text x="50%" y="55%" fill="%23fff" font-size="24" text-anchor="middle">(Tu imagen de fondo aquí)</text></svg>');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            color: var(--blanco-hueso);
+        }
+
+        /* Header Superior */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background: rgba(44, 44, 44, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--verde-emp);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--blanco-hueso);
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            color: var(--gris);
+            margin-top: 2px;
+        }
+
+        .login-button {
+            padding: 12px 30px;
+            background: var(--verde-emp);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .login-button:hover {
+            background: var(--verde-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5);
+        }
+
+        /* Contenedor Principal */
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 90px);
+            padding: 40px;
+        }
+
+        .content-wrapper {
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero-section h2 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            letter-spacing: -1px;
+        }
+
+        .hero-section p {
+            font-size: 22px;
+            color: var(--blanco-hueso);
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--verde-emp);
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        /* Grid de Accesos Rápidos */
+        .quick-access-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .access-card {
+            background: rgba(245, 245, 220, 0.95);
+            padding: 40px 30px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border: 2px solid transparent;
+        }
+
+        .access-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.3);
+            border-color: var(--verde-emp);
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--verde-emp);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+        }
+
+        .access-card h3 {
+            color: var(--negro-gris);
+            font-size: 22px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .access-card p {
+            color: var(--gris);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        /* Calculadora Button Flotante */
+        .calculator-fab {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 70px;
+            height: 70px;
+            background: var(--verde-emp);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+            transition: all 0.3s ease;
+            font-size: 32px;
+            color: white;
+        }
+
+        .calculator-fab:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 12px 35px rgba(76, 175, 80, 0.6);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(44, 44, 44, 0.9);
+            color: var(--gris);
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Indicador de diseño */
+        .design-label {
+            position: fixed;
+            top: 100px;
+            left: 20px;
+            background: var(--verde-emp);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Label de Diseño -->
+    <div class="design-label">OPCIÓN 1: CORPORATIVA ELEGANTE</div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">H₂</div>
+            <div class="logo-text">
+                <h1>AquaPure H₂</h1>
+                <p>Sistema de Tratamiento de Aguas</p>
+            </div>
+        </div>
+        <button class="login-button">Iniciar Sesión →</button>
+    </header>
+
+    <!-- Contenido Principal -->
+    <div class="main-container">
+        <div class="content-wrapper">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <h2>Tecnología de Hidrógeno</h2>
+                <p>Monitoreo en tiempo real de purificación de agua con tecnología avanzada de hidrógeno</p>
+                <div class="hero-subtitle">EMP MEDELLÍN • Sistema Inteligente de Tratamiento</div>
+            </div>
+
+            <!-- Grid de Accesos Rápidos -->
+            <div class="quick-access-grid">
+                <div class="access-card">
+                    <div class="card-icon">💧</div>
+                    <h3>Nivel de Pureza</h3>
+                    <p>Accede a las métricas actuales del nivel de pureza del agua tratada</p>
+                </div>
+
+                <div class="access-card">
+                    <div class="card-icon">📊</div>
+                    <h3>Gráficas de Sensores</h3>
+                    <p>Visualiza datos en tiempo real de todos los sensores de pureza</p>
+                </div>
+
+                <div class="access-card">
+                    <div class="card-icon">📈</div>
+                    <h3>Indicadores</h3>
+                    <p>Consulta los indicadores de desempeño del sistema de tratamiento</p>
+                </div>
+
+                <div class="access-card">
+                    <div class="card-icon">⚙️</div>
+                    <h3>Variables del Sistema</h3>
+                    <p>Monitorea todas las variables agrupadas por parámetros</p>
+                </div>
+
+                <div class="access-card">
+                    <div class="card-icon">🔬</div>
+                    <h3>Análisis Prospectivo</h3>
+                    <p>Predicciones y análisis avanzado del comportamiento del sistema</p>
+                </div>
+
+                <div class="access-card">
+                    <div class="card-icon">🛠️</div>
+                    <h3>Gestión de Sensores</h3>
+                    <p>Administra y configura los sensores del sistema (Admin)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón Flotante de Calculadora -->
+    <div class="calculator-fab" title="Calculadora de Desempeño">🧮</div>
+
+    <script>
+        // Simulación de interactividad
+        document.querySelectorAll('.access-card').forEach(card => {
+            card.addEventListener('click', () => {
+                alert('Esta funcionalidad se habilitará después del login');
+            });
+        });
+
+        document.querySelector('.login-button').addEventListener('click', () => {
+            alert('Modal de Login: Administrador u Operario');
+        });
+
+        document.querySelector('.calculator-fab').addEventListener('click', () => {
+            alert('Se abrirá ventana emergente con Calculadora de Desempeño');
+        });
+    </script>
+</body>
+</html>

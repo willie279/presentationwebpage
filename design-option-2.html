@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opción 2 - Landing Page Tratamiento de Aguas | EMP Medellín</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blanco-hueso: #F5F5DC;
+            --gris: #808080;
+            --negro-gris: #2C2C2C;
+            --verde-emp: #4CAF50;
+            --verde-hover: #45a049;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--negro-gris);
+            color: var(--blanco-hueso);
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: rgba(245, 245, 220, 0.98);
+            padding: 40px 30px;
+            box-shadow: 4px 0 25px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+        }
+
+        .sidebar-logo {
+            margin-bottom: 50px;
+        }
+
+        .sidebar-logo-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--verde-emp);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: white;
+            margin-bottom: 15px;
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .sidebar-logo h1 {
+            color: var(--negro-gris);
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-logo p {
+            color: var(--gris);
+            font-size: 13px;
+        }
+
+        .sidebar-divider {
+            height: 2px;
+            background: linear-gradient(to right, var(--verde-emp), transparent);
+            margin: 30px 0;
+        }
+
+        .sidebar-section {
+            margin-bottom: 35px;
+        }
+
+        .sidebar-section h3 {
+            color: var(--gris);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .sidebar-nav-item {
+            padding: 12px 15px;
+            color: var(--negro-gris);
+            text-decoration: none;
+            display: block;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .sidebar-nav-item:hover {
+            background: var(--verde-emp);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .login-sidebar-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--verde-emp);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .login-sidebar-btn:hover {
+            background: var(--verde-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+            background: linear-gradient(180deg, rgba(44, 44, 44, 0.95), rgba(76, 175, 80, 0.7)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900"><rect fill="%23444" width="1400" height="900"/><text x="50%" y="45%" fill="%23fff" font-size="56" text-anchor="middle">PLANTA DE TRATAMIENTO</text><text x="50%" y="52%" fill="%23aaa" font-size="28" text-anchor="middle">(Tu imagen de fondo aquí)</text><circle cx="300" cy="300" r="100" fill="%234CAF50" opacity="0.2"/><circle cx="1100" cy="700" r="150" fill="%234CAF50" opacity="0.2"/></svg>');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        /* Hero Section con diseño split */
+        .hero-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+            align-items: center;
+            padding: 80px 100px 80px 80px;
+            gap: 60px;
+        }
+
+        .hero-left {
+            padding-right: 40px;
+        }
+
+        .hero-left h2 {
+            font-size: 64px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .hero-left .highlight {
+            color: var(--verde-emp);
+            display: block;
+        }
+
+        .hero-left p {
+            font-size: 20px;
+            line-height: 1.7;
+            opacity: 0.9;
+            margin-bottom: 35px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--verde-emp);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--gris);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Cards Section - Diseño Moderno */
+        .hero-right {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .metric-card {
+            background: rgba(245, 245, 220, 0.95);
+            padding: 35px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 2px solid transparent;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(76, 175, 80, 0.4);
+            border-color: var(--verde-emp);
+        }
+
+        .metric-card.large {
+            grid-column: span 2;
+            min-height: 200px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .card-icon-small {
+            width: 50px;
+            height: 50px;
+            background: var(--verde-emp);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .metric-card h3 {
+            color: var(--negro-gris);
+            font-size: 19px;
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .metric-card p {
+            color: var(--gris);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .card-arrow {
+            color: var(--verde-emp);
+            font-size: 24px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover .card-arrow {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        /* Floating Calculator */
+        .calc-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--verde-emp), var(--verde-hover));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 35px rgba(76, 175, 80, 0.5);
+            transition: all 0.3s ease;
+            font-size: 36px;
+            color: white;
+            z-index: 99;
+        }
+
+        .calc-float:hover {
+            transform: scale(1.15) rotate(90deg);
+            box-shadow: 0 15px 45px rgba(76, 175, 80, 0.7);
+        }
+
+        /* Design Label */
+        .design-label-2 {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: var(--verde-emp);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        /* Company Badge */
+        .company-badge {
+            position: absolute;
+            bottom: 40px;
+            left: 80px;
+            background: rgba(245, 245, 220, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(245, 245, 220, 0.2);
+        }
+
+        .company-badge p {
+            font-size: 14px;
+            color: var(--blanco-hueso);
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Design Label -->
+    <div class="design-label-2">OPCIÓN 2: MODERNA MINIMALISTA</div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <div class="sidebar-logo-icon">H₂</div>
+            <h1>AquaPure H₂</h1>
+            <p>EMP Medellín</p>
+        </div>
+
+        <div class="sidebar-divider"></div>
+
+        <div class="sidebar-section">
+            <h3>Acceso Rápido</h3>
+            <div class="sidebar-nav-item">💧 Nivel de Pureza</div>
+            <div class="sidebar-nav-item">📊 Gráficas</div>
+            <div class="sidebar-nav-item">📈 Indicadores</div>
+        </div>
+
+        <div class="sidebar-section">
+            <h3>Sistema</h3>
+            <div class="sidebar-nav-item">⚙️ Variables</div>
+            <div class="sidebar-nav-item">🔬 Análisis</div>
+            <div class="sidebar-nav-item">🛠️ Sensores</div>
+        </div>
+
+        <button class="login-sidebar-btn">Iniciar Sesión →</button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="hero-split">
+            <!-- Left Side: Información Principal -->
+            <div class="hero-left">
+                <h2>
+                    Sistema Avanzado de
+                    <span class="highlight">Tratamiento de Aguas</span>
+                    con Hidrógeno
+                </h2>
+                <p>
+                    Monitoreo inteligente en tiempo real. Tecnología de punta para 
+                    purificación de agua con máxima eficiencia y control total del proceso.
+                </p>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">99.8%</span>
+                        <span class="stat-label">Pureza</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Monitoreo</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">< 3</span>
+                        <span class="stat-label">Clicks</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Tarjetas de Acceso -->
+            <div class="hero-right">
+                <div class="metric-card">
+                    <div>
+                        <div class="card-header">
+                            <div class="card-icon-small">💧</div>
+                            <h3>Pureza</h3>
+                        </div>
+                        <p>Métricas actuales del nivel de pureza</p>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+
+                <div class="metric-card">
+                    <div>
+                        <div class="card-header">
+                            <div class="card-icon-small">📊</div>
+                            <h3>Sensores</h3>
+                        </div>
+                        <p>Gráficas en tiempo real</p>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+
+                <div class="metric-card">
+                    <div>
+                        <div class="card-header">
+                            <div class="card-icon-small">📈</div>
+                            <h3>Indicadores</h3>
+                        </div>
+                        <p>Desempeño del sistema</p>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+
+                <div class="metric-card">
+                    <div>
+                        <div class="card-header">
+                            <div class="card-icon-small">⚙️</div>
+                            <h3>Variables</h3>
+                        </div>
+                        <p>Parámetros agrupados</p>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+
+                <div class="metric-card large">
+                    <div>
+                        <div class="card-header">
+                            <div class="card-icon-small">🔬</div>
+                            <h3>Análisis Prospectivo</h3>
+                        </div>
+                        <p>Predicciones y análisis avanzado del comportamiento del sistema de tratamiento</p>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Company Badge -->
+        <div class="company-badge">
+            <p>Tecnología de Hidrógeno • EMP Medellín 2025</p>
+        </div>
+    </main>
+
+    <!-- Floating Calculator Button -->
+    <div class="calc-float" title="Calculadora de Desempeño">🧮</div>
+
+    <script>
+        // Simulación de interactividad
+        document.querySelectorAll('.metric-card, .sidebar-nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                alert('Esta funcionalidad se habilitará después del login');
+            });
+        });
+
+        document.querySelector('.login-sidebar-btn').addEventListener('click', () => {
+            alert('Modal de Login: Administrador (lectura/escritura) u Operario (solo lectura)');
+        });
+
+        document.querySelector('.calc-float').addEventListener('click', () => {
+            alert('Se abrirá ventana emergente con Calculadora de Desempeño');
+        });
+    </script>
+</body>
+</html>

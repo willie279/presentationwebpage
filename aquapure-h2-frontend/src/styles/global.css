@@ -1,0 +1,231 @@
+/* Estilos Globales */
+
+@import './reset.css';
+@import './variables.css';
+
+/* Clases de Utilidad */
+
+.container {
+  width: 100%;
+  max-width: var(--desktop-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-4xl);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+}
+
+/* Textos */
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Colores de Texto */
+
+.text-primary {
+  color: var(--color-negro-gris);
+}
+
+.text-secondary {
+  color: var(--color-gris);
+}
+
+.text-verde {
+  color: var(--color-verde-emp);
+}
+
+.text-white {
+  color: white;
+}
+
+.text-error {
+  color: var(--color-error);
+}
+
+/* Fondos */
+
+.bg-blanco-hueso {
+  background-color: var(--color-blanco-hueso);
+}
+
+.bg-negro-gris {
+  background-color: var(--color-negro-gris);
+}
+
+.bg-verde {
+  background-color: var(--color-verde-emp);
+}
+
+/* Espaciado */
+
+.mt-1 { margin-top: var(--spacing-sm); }
+.mt-2 { margin-top: var(--spacing-md); }
+.mt-3 { margin-top: var(--spacing-lg); }
+.mt-4 { margin-top: var(--spacing-xl); }
+.mt-5 { margin-top: var(--spacing-2xl); }
+
+.mb-1 { margin-bottom: var(--spacing-sm); }
+.mb-2 { margin-bottom: var(--spacing-md); }
+.mb-3 { margin-bottom: var(--spacing-lg); }
+.mb-4 { margin-bottom: var(--spacing-xl); }
+.mb-5 { margin-bottom: var(--spacing-2xl); }
+
+.p-1 { padding: var(--spacing-sm); }
+.p-2 { padding: var(--spacing-md); }
+.p-3 { padding: var(--spacing-lg); }
+.p-4 { padding: var(--spacing-xl); }
+.p-5 { padding: var(--spacing-2xl); }
+
+/* Sombras */
+
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+
+/* Animaciones */
+
+.transition {
+  transition: all var(--transition-normal);
+}
+
+.transition-fast {
+  transition: all var(--transition-fast);
+}
+
+.transition-slow {
+  transition: all var(--transition-slow);
+}
+
+/* Estados de Carga */
+
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: wait;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* Overlay para Modales */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-index-modal-backdrop);
+}
+
+/* Animación de Fade In */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn var(--transition-normal) ease-in;
+}
+
+/* Animación de Slide Up */
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  animation: slideUp var(--transition-normal) ease-out;
+}
+
+/* Skeleton Loading */
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-blanco-hueso) 0px,
+    var(--color-gris) 40px,
+    var(--color-blanco-hueso) 80px
+  );
+  background-size: 200px 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+/* Fondo de Hero con Imagen de Planta */
+
+.hero-background {
+  background: linear-gradient(
+      135deg,
+      var(--color-negro-gris-92),
+      var(--color-verde-emp-85)
+    ),
+    center / cover no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Card Hover Effect */
+
+.card-hover {
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-verde-md);
+}

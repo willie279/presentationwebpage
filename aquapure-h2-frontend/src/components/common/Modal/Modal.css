@@ -1,0 +1,122 @@
+/* Estilos del componente Modal */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-index-modal-backdrop);
+  animation: fadeIn 0.2s ease-in;
+  backdrop-filter: blur(4px);
+}
+
+.modal-container {
+  background: var(--color-blanco-hueso);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease-out;
+  position: relative;
+  z-index: var(--z-index-modal);
+}
+
+.modal-small {
+  width: 90%;
+  max-width: 400px;
+}
+
+.modal-medium {
+  width: 90%;
+  max-width: 600px;
+}
+
+.modal-large {
+  width: 90%;
+  max-width: 900px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-3xl);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.modal-title {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-negro-gris);
+}
+
+.modal-close-button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  color: var(--color-gris);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close-button:hover {
+  background: rgba(128, 128, 128, 0.1);
+  color: var(--color-negro-gris);
+}
+
+.modal-body {
+  padding: var(--spacing-3xl);
+}
+
+/* Animaciones */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Scrollbar personalizado en el modal */
+
+.modal-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-container::-webkit-scrollbar-track {
+  background: var(--color-blanco-hueso);
+}
+
+.modal-container::-webkit-scrollbar-thumb {
+  background: var(--color-gris);
+  border-radius: var(--radius-full);
+}
+
+.modal-container::-webkit-scrollbar-thumb:hover {
+  background: var(--color-verde-emp);
+}

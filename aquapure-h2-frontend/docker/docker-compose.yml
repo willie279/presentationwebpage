@@ -1,0 +1,123 @@
+# Docker Compose para AquaPure H₂ - Sistema completo
+
+version: '3.8'
+
+services:
+  # ============================================
+  # Frontend - React + Vite
+  # ============================================
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: aquapure-frontend
+    ports:
+      - "3000:80"
+    environment:
+      - VITE_FIWARE_URL=http://orion:1026
+      - VITE_API_URL=http://backend:4000
+      - VITE_APP_NAME=AquaPure H2
+    networks:
+      - aquapure-network
+    depends_on:
+      - orion
+    restart: unless-stopped
+    labels:
+      - "com.aquapure.description=Frontend React Application"
+
+  # ============================================
+  # Fiware Orion Context Broker
+  # ============================================
+  orion:
+    image: fiware/orion:3.10.1
+    container_name: aquapure-orion
+    hostname: orion
+    ports:
+      - "1026:1026"
+    command: -dbhost mongo -logLevel DEBUG
+    environment:
+      - ORION_LOG_LEVEL=DEBUG
+    networks:
+      - aquapure-network
+    depends_on:
+      - mongo
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:1026/version"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "com.aquapure.description=Fiware Orion Context Broker"
+
+  # ============================================
+  # MongoDB (Base de datos para Orion)
+  # ============================================
+  mongo:
+    image: mongo:4.4
+    container_name: aquapure-mongo
+    hostname: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=orion
+    volumes:
+      - mongo-data:/data/db
+      - mongo-config:/data/configdb
+    networks:
+      - aquapure-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "com.aquapure.description=MongoDB Database"
+
+  # ============================================
+  # Mongo Express (Administración de MongoDB - Opcional)
+  # ============================================
+  mongo-express:
+    image: mongo-express:latest
+    container_name: aquapure-mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+      - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=admin
+    networks:
+      - aquapure-network
+    depends_on:
+      - mongo
+    restart: unless-stopped
+    labels:
+      - "com.aquapure.description=MongoDB Web Interface"
+
+# ============================================
+# Networks
+# ============================================
+networks:
+  aquapure-network:
+    driver: bridge
+    name: aquapure-network
+    labels:
+      - "com.aquapure.description=AquaPure H2 Network"
+
+# ============================================
+# Volumes
+# ============================================
+volumes:
+  mongo-data:
+    driver: local
+    name: aquapure-mongo-data
+    labels:
+      - "com.aquapure.description=MongoDB Data Volume"
+  
+  mongo-config:
+    driver: local
+    name: aquapure-mongo-config
+    labels:
+      - "com.aquapure.description=MongoDB Config Volume"
